@@ -6,11 +6,11 @@ export default function Gallery({ images, alt }) {
   const [zoom, setZoom] = useState(false);
   const multi = images.length > 1;
   return (
-    <div className={multi ? 'grid grid-cols-[64px_1fr] gap-3 sm:grid-cols-[80px_1fr]' : ''}>
+    <div className={multi ? 'flex flex-col-reverse gap-3 sm:grid sm:grid-cols-[80px_1fr]' : ''}>
       {multi && (
-        <div className="flex flex-col gap-3">
+        <div className="flex gap-2 overflow-x-auto sm:flex-col sm:gap-3">
           {images.map((f, n) => (
-            <button key={f} onClick={() => setI(n)} aria-label={`View image ${n + 1}`} aria-current={n === i} className={`border ${n === i ? 'border-accent' : 'border-line opacity-70 hover:opacity-100'}`}>
+            <button key={f} onClick={() => setI(n)} aria-label={`View image ${n + 1}`} aria-current={n === i} className={`w-16 shrink-0 border sm:w-auto ${n === i ? 'border-accent' : 'border-line opacity-70 hover:opacity-100'}`}>
               <Photo img={f} className="aspect-[3/4]" />
             </button>
           ))}

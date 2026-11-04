@@ -98,3 +98,18 @@ header nav a:hover::after, header nav a[aria-current='page']::after { transform:
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+@media (max-width: 767px) {
+  .wrap { padding-right: 1rem; padding-left: 1rem; }
+  .display { letter-spacing: -.035em; }
+  .btn { min-height: 44px; padding-right: 1rem; padding-left: 1rem; }
+  .photo-motion:hover img { transform: none; filter: none; }
+  .card-motion:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgb(0 0 0 / 24%); }
+  .page-enter { animation-duration: 500ms; }
+  .scroll-reveal { transform: translateY(22px); filter: blur(3px); transition-duration: 600ms; }
+  .nav-water::after { display: none; }
+  .drawer-enter { animation-name: drawer-mobile-enter; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .wrap { padding-right: 1.5rem; padding-left: 1.5rem; }
+}
+@keyframes drawer-mobile-enter { from { opacity: 0; transform: translateY(100%); } to { opacity: 1; transform: translateY(0); } }
