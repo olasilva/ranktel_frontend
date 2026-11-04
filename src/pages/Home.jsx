@@ -7,12 +7,13 @@ import Photo from '../components/Photo.jsx';
 import Newsletter from '../components/Newsletter.jsx';
 import { Store, Heart } from '../components/Icons.jsx';
 import { useWishlist } from '../CartContext.jsx';
+import ScrollReveal from '../components/ScrollReveal.jsx';
 
 const CATS = [
-  ['Clothing', 'Denim, Outerwear & Tops', '/clothing', 'cat-clothing.jpg'],
-  ['Shoes', 'Sneakers, Mules & Slides', '/shoes', 'cat-shoes.jpg'],
-  ['Bags', 'Cross-Body & Travel Rig', '/bags', 'cat-bags.jpg'],
-  ['Accessories', 'Belts, Hardware & Caps', '/accessories', 'cat-accessories.jpg'],
+  ['Clothing', 'Denim, Outerwear & Tops', '/clothing', 'clothes.png'],
+  ['Shoes', 'Sneakers, Mules & Slides', '/shoes', 'shopping.png'],
+  ['Bags', 'Cross-Body & Travel Rig', '/bags', 'bags.png'],
+  ['Accessories', 'Belts, Hardware & Caps', '/accessories', 'clothes.png'],
 ];
 const PERKS = [
   ['Store pickup in Kurudu', 'Visit our Kurudu, Abuja hub to inspect, try on, and collect your order directly.', 'Pay at store available', 'text-cobalt'],
@@ -33,7 +34,7 @@ export default function Home() {
     <main>
       {/* Hero */}
       <section className="wrap grid gap-4 py-6 lg:grid-cols-[2fr_1fr]">
-        <Photo img="hero-main.jpg" alt="Ranktel season drop" className="reveal-left min-h-[420px] lg:min-h-[520px]">
+        <Photo img="shopping.png" alt="Ranktel footwear season drop" className="reveal-left min-h-[420px] lg:min-h-[520px]">
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
           <div className="relative flex h-full min-h-[420px] flex-col justify-end p-6 sm:p-10 lg:min-h-[520px]">
             <p className="label fade-in stagger-1 !text-accent">Lagos nocturnal • Fluid architecture</p>
@@ -43,8 +44,8 @@ export default function Home() {
           </div>
         </Photo>
         <div className="grid gap-4">
-          <Tile img="hero-denim.jpg" name="Textured Denim Rig" price={85000} cta="Inspect unit" to="/clothing" />
-          <Tile img="hero-monolith.jpg" name="Chunky White Monolith" price={55000} cta="Secure size" to="/product/chunky-white-monolith" badge="Restocked" />
+          <Tile img="clothes.png" name="Textured Denim Rig" price={85000} cta="Inspect unit" to="/clothing" />
+          <Tile img="shopping.png" name="Chunky White Monolith" price={55000} cta="Secure size" to="/product/chunky-white-monolith" badge="Restocked" />
         </div>
       </section>
 
@@ -54,10 +55,12 @@ export default function Home() {
         <h2 className="display mt-3 text-3xl sm:text-4xl">System categories</h2>
         <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
           {CATS.map(([t, s, to, img], i) => (
-            <Link key={t} to={to} style={{ animationDelay: `${i * 80}ms` }} className="card-motion reveal-up group block bg-panel">
+            <ScrollReveal key={t} delay={i * 80}>
+            <Link to={to} className="card-motion group block bg-panel">
               <Photo img={img} alt={t} className="aspect-[4/5]" />
               <div className="flex items-center justify-between p-4"><div><h3 className="font-display text-base font-bold uppercase tracking-wide">{t}</h3><p className="mt-1 text-[11px] text-muted">{s}</p></div><span className="text-lg transition group-hover:translate-x-1" aria-hidden>↗</span></div>
             </Link>
+            </ScrollReveal>
           ))}
         </div>
       </section>
@@ -71,7 +74,8 @@ export default function Home() {
         {arrivals && (
           <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
             {arrivals.map((a) => (
-              <article key={a.slug} style={{ animationDelay: `${arrivals.indexOf(a) * 80}ms` }} className="card-motion reveal-up relative bg-panel">
+              <ScrollReveal key={a.slug} delay={arrivals.indexOf(a) * 80}>
+              <article className="card-motion relative bg-panel">
                 <Link to={`/product/${a.slug}`} className="block">
                   <Photo img={a.img} alt={a.name} className="aspect-[4/5]" light />
                   <div className="p-4">
@@ -83,6 +87,7 @@ export default function Home() {
                 {a.badge && <span className={`absolute left-2 top-2 px-2 py-1 text-[9px] font-bold uppercase tracking-widest ${TONES[a.badge.tone]}`}>{a.badge.text}</span>}
                 <button onClick={() => wl.toggle(a.slug)} aria-pressed={wl.has(a.slug)} aria-label={`Save ${a.name} to wishlist`} className={`absolute right-2 top-2 grid h-8 w-8 place-items-center rounded-full bg-ink/80 ${wl.has(a.slug) ? 'text-accent' : ''}`}><Heart filled={wl.has(a.slug)} /></button>
               </article>
+              </ScrollReveal>
             ))}
           </div>
         )}

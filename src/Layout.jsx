@@ -43,7 +43,7 @@ export default function Layout() {
           {notice.text} <button className="ml-3 underline" onClick={() => setNotice(null)}>Dismiss</button>
         </div>
       )}
-      <div key={pathname} className="page-enter">
+      <div key={pathname} className="page-enter drop-load">
         <Outlet context={{ openBag: () => setBagOpen(true), config }} />
       </div>
       <Footer />

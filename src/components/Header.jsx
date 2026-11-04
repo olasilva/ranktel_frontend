@@ -14,7 +14,7 @@ export default function Header({ onBag }) {
     <header className="sticky top-0 z-40 border-b border-line bg-ink/90 backdrop-blur">
       <div className="wrap flex h-16 items-center justify-between gap-6">
         <Link to="/" className="font-display text-xl font-extrabold tracking-wide transition-transform duration-300 hover:scale-105" aria-label="Ranktel home">RANK<span className="text-lav">TEL</span></Link>
-        <nav className="hidden gap-7 md:flex" aria-label="Main">
+        <nav className="nav-water hidden gap-7 md:flex" aria-label="Main">
           {NAV.map(([n, to]) => <NavLink key={n} to={to} end={to === '/'} className={link}>{n}</NavLink>)}
         </nav>
         <div className="flex items-center gap-4">
@@ -32,7 +32,7 @@ export default function Header({ onBag }) {
           <button className="btn-line !px-3 !py-1.5 md:hidden" onClick={() => setOpen(!open)} aria-expanded={open}>{open ? 'Close' : 'Menu'}</button>
         </div>
       </div>
-      {open && <nav className="reveal-up wrap flex flex-col gap-3 pb-4 md:hidden" aria-label="Mobile">{NAV.map(([n, to], i) => <NavLink key={n} to={to} end={to === '/'} onClick={() => setOpen(false)} style={{ animationDelay: `${i * 60}ms` }} className={`${link} reveal-up`}>{n}</NavLink>)}</nav>}
+      {open && <nav className="nav-water reveal-up wrap flex flex-col gap-3 pb-4 md:hidden" aria-label="Mobile">{NAV.map(([n, to], i) => <NavLink key={n} to={to} end={to === '/'} onClick={() => setOpen(false)} style={{ animationDelay: `${i * 60}ms` }} className={`${link} reveal-up`}>{n}</NavLink>)}</nav>}
     </header>
   );
 }

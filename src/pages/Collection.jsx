@@ -5,6 +5,7 @@ import { CATS } from '../data.js';
 import Photo from '../components/Photo.jsx';
 import ProductCard from '../components/ProductCard.jsx';
 import { Close } from '../components/Icons.jsx';
+import ScrollReveal from '../components/ScrollReveal.jsx';
 
 const SORTS = [['newest', 'Newest drops'], ['price-asc', 'Price: low to high'], ['price-desc', 'Price: high to low']];
 
@@ -77,7 +78,7 @@ export default function Collection({ category }) {
         {!state.error && !state.loading && items.length === 0 && (
           <div className="py-24 text-center"><p className="text-muted">No pieces match these filters.</p><button className="btn-line mt-4" onClick={clear}>Clear filters</button></div>
         )}
-        <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">{items.map((it) => <ProductCard key={it.slug} it={it} />)}</div>
+        <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">{items.map((it, i) => <ScrollReveal key={it.slug} delay={i * 70}><ProductCard it={it} /></ScrollReveal>)}</div>
         {state.loading && <p className="py-10 text-center text-sm text-muted">Loading…</p>}
         {!state.loading && info.page < info.pages && (
           <div className="py-12 text-center"><button className="btn-line !border-cobalt !px-10" onClick={() => setPage(info.page + 1)}>{meta.loadMore}</button></div>
