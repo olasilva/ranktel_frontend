@@ -95,6 +95,7 @@ export default function BagDrawer({ open, onClose, config }) {
           </div>
           <div className="border-t border-line p-5">
             <p className="mb-4 flex justify-between text-sm"><span className="text-muted">Subtotal</span><b>{naira(cart.subtotal)}</b></p>
+            <button type="button" className="mb-3 w-full text-center text-xs text-accent underline" onClick={() => { onClose(); navigate('/bag'); }}>View full bag</button>
             <button className="btn-cobalt w-full py-4" disabled={!cart.items.length} onClick={() => {
               if (!user) {
                 sessionStorage.setItem('ranktel-pending-checkout', '1');

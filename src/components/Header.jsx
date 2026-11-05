@@ -20,10 +20,10 @@ export default function Header({ onBag }) {
         <div className="flex items-center gap-4">
           <button aria-label="Search" className="hover:text-accent"><Search /></button>
           <Link to="/account" aria-label={user ? 'Your account' : 'Sign in'} className="hidden text-[11px] font-bold uppercase tracking-widest hover:text-accent sm:block">{user ? (user.name?.split(' ')[0] || 'Account') : 'Sign in'}</Link>
-          <span className="relative hidden sm:block" title="Wishlist">
+          <Link to="/favorites" aria-label="Favorites" className="relative hidden sm:block hover:text-accent" title="Wishlist">
             <Heart filled={wish.slugs.length > 0} />
             {wish.slugs.length > 0 && <span className="absolute -right-2 -top-2 grid h-4 min-w-4 place-items-center rounded-sm bg-accent px-1 text-[10px] font-bold text-black">{wish.slugs.length}</span>}
-          </span>
+          </Link>
           <button aria-label={`Bag, ${count} items`} onClick={onBag} className="relative hover:text-accent">
             <Bag />
             {count > 0 && <span className="absolute -right-2 -top-2 grid h-4 min-w-4 place-items-center rounded-sm bg-cobalt px-1 text-[10px] font-bold text-white">{count}</span>}

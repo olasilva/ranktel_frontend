@@ -17,7 +17,11 @@ export default function Gallery({ images, alt }) {
         </div>
       )}
       <div className="relative">
-        <Photo key={images[i]} img={images[i]} alt={alt} className="fade-in aspect-[4/5] w-full border border-line" />
+        <Photo key={images[i]} img={images[i]} alt={alt} className="fade-in aspect-[4/5] w-full border border-line bg-panel2" />
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 bg-gradient-to-t from-ink/90 to-transparent p-5 pt-16">
+          <p className="label">Aspect {String(i + 1).padStart(2, '0')} / Isometric elevation</p>
+          <p className="mt-1 text-xs text-neutral-300">Kurudu Atelier Engineering Rig</p>
+        </div>
         <button onClick={() => setZoom(true)} aria-label="Expand image" className="absolute bottom-3 right-3 grid h-9 w-9 place-items-center bg-ink/70 hover:bg-ink"><Expand /></button>
       </div>
       {zoom && (

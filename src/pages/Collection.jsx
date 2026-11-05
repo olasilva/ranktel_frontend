@@ -42,23 +42,26 @@ export default function Collection({ category }) {
 
   return (
     <main>
-      <section className="relative min-h-[300px] overflow-hidden border-b border-line">
-        {meta.hero ? <Photo img={meta.hero} className="absolute inset-0" /> : <div className="absolute inset-0 bg-[radial-gradient(60rem_20rem_at_0%_30%,#14204f,transparent)]" />}
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/30" />
-        <div className="wrap relative flex min-h-[300px] flex-col justify-end pb-8 pt-24">
-          <nav aria-label="Breadcrumb" className="label flex gap-2"><Link to="/" className="hover:text-white">Home</Link>/<span>{meta.crumb}</span>/<span className="text-accent">{subLabel}</span></nav>
-          <h1 className="display mt-4 max-w-2xl text-4xl sm:text-5xl">{meta.title}</h1>
+      <section className="relative min-h-[350px] overflow-hidden border-b border-line bg-panel2 sm:min-h-[460px]">
+        {meta.hero ? <Photo img={meta.hero} className="absolute inset-0 opacity-50" /> : <div className="absolute inset-0 bg-[radial-gradient(60rem_25rem_at_0%_30%,#14204f,transparent)]" />}
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/70 to-ink/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/20" />
+        <div className="wrap relative flex min-h-[350px] flex-col justify-end pb-12 pt-28 sm:min-h-[460px] sm:pb-16">
+          <nav aria-label="Breadcrumb" className="label flex flex-wrap gap-2"><Link to="/" className="hover:text-white">Home</Link><span>/</span><span>{meta.crumb}</span><span>/</span><span className="text-accent">{subLabel}</span></nav>
+          <div className="mt-5 flex items-center gap-2"><span className="h-2 w-2 bg-accent" /><p className="eyebrow">Curated collection // Ranktel atelier</p></div>
+          <h1 className="display mt-4 max-w-4xl text-5xl sm:text-7xl">{meta.title}</h1>
+          <p className="mt-5 max-w-xl text-sm leading-7 text-muted">Engineered silhouettes, carry systems, and daily artifacts selected for the Lagos nocturne.</p>
         </div>
       </section>
 
-      <div className="wrap pt-8">
+      <div className="wrap pt-8 sm:pt-12">
         {info.subs.length > 0 && (
           <div className="flex flex-wrap gap-2" role="group" aria-label="Sub-categories">
             <button className={chip(!sub)} aria-pressed={!sub} onClick={() => setSub('')}>All ({info.categoryTotal})</button>
             {info.subs.map((s) => <button key={s.id} className={chip(sub === s.id)} aria-pressed={sub === s.id} onClick={() => setSub(s.id)}>{s.label}</button>)}
           </div>
         )}
-        <div className="mt-4 flex flex-wrap items-center gap-3 text-xs">
+        <div className="mt-6 flex flex-wrap items-center gap-3 border-y border-line py-4 text-xs">
           <button className="btn-line !px-3 !py-2" aria-expanded={panel} onClick={() => setPanel(!panel)}>Filter &amp; sort <span className="ml-1 grid h-4 w-4 place-items-center rounded-full bg-accent text-[9px] text-black">{activeCount}</span></button>
           {inStock && <Active onClose={() => setInStock(false)}><i className="mr-1 inline-block h-1.5 w-1.5 rounded-full bg-accent" />In stock</Active>}
           {unisex && <Active onClose={() => setUnisex(false)}>Unisex</Active>}
