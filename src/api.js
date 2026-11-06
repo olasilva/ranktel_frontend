@@ -1,4 +1,4 @@
-const BASE = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? '' : 'https://ranktel-backend.onrender.com');
+const BASE = (import.meta.env.VITE_API_URL || (import.meta.env.DEV ? '' : 'https://ranktel-backend.onrender.com')).replace(/\/+$/, '');
 const TOKEN_KEY = 'ranktel-auth-token';
 
 async function req(path, opts) {
