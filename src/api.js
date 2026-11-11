@@ -1,4 +1,3 @@
-const BASE = (import.meta.env.VITE_API_URL || (import.meta.env.DEV ? '' : 'https://ranktel-backend.onrender.com')).replace(/\/+$/, '');
 const TOKEN_KEY = 'ranktel-auth-token';
 
 async function req(path, opts) {
@@ -8,7 +7,7 @@ async function req(path, opts) {
     ...(token ? { Authorization: `Bearer ${token}` } : {}),
     ...opts?.headers,
   };
-  const res = await fetch(`${BASE}/api${path}`, { ...opts, headers });
+  const res = await fetch(`/api${path}`, { ...opts, headers });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(data.error || 'Something went wrong. Please try again.');
   return data;

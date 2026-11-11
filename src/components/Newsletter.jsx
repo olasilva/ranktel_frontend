@@ -10,7 +10,7 @@ export default function Newsletter() {
   }
   return (
     <section className="relative mt-4">
-      <Photo img="newsletter.jpg" className="absolute inset-0" />
+      <Photo img="shopping.png" className="absolute inset-0" />
       <div className="absolute inset-0 bg-black/70" />
       <div className="wrap relative py-20 text-center">
         <p className="label !text-accent">Join the inner circle</p>

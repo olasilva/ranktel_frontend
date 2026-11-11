@@ -96,13 +96,13 @@ export default function Home() {
 
       {/* Manifesto */}
       <section className="wrap grid items-stretch gap-8 py-14 lg:grid-cols-[1fr_1.1fr]">
-        <Photo img="manifesto.jpg" alt="Ranktel campaign" className="min-h-[420px]" />
+        <Photo img="clothes.png" alt="Ranktel campaign" className="min-h-[420px]" />
         <div className="flex flex-col justify-center">
           <p className="eyebrow flex items-center gap-2"><i className="inline-block h-px w-6 bg-accent" />Manifesto 2026</p>
           <h2 className="display mt-4 text-3xl sm:text-5xl">“Designed in Nigeria.<br /><span className="text-accent">Cut for everyone.</span>”</h2>
           <p className="mt-5 max-w-md text-sm leading-relaxed text-muted">Ranktel exists at the intersection of Abuja’s planned monumental geometry and Lagos’ relentless nocturnal velocity. Every seam, pleat, and closure is engineered unisex—proportioned to drape naturally on all forms without gendered compromise.</p>
           <div className="mt-7 flex gap-4 bg-panel p-4">
-            <Photo img="manifesto-thumb.jpg" className="h-28 w-24 shrink-0" />
+            <Photo img="clothes.png" className="h-28 w-24 shrink-0" />
             <dl className="flex-1 space-y-2 text-xs">
               {[['Cut origin', 'Kurudu Atelier, Abuja'], ['Textile grade', 'Heavy Gauge 100% Cotton'], ['Unisex proportions', 'Universal Fluid Drape']].map(([k, v], i) => (
                 <div key={k} className="flex justify-between gap-3"><dt className="label !text-[9px]">{k}</dt><dd className={`text-right ${i === 2 ? 'text-accent' : ''}`}>{v}</dd></div>
